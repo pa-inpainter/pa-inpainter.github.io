@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Perspective-aware 3D Gaussian Inpainting with Multi-view Consistency">
+  <meta name="keywords" content="Perspective-aware 3D Gaussian Inpainting with Multi-view Consistency">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PAInpainter</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="static/css/bootstrap-4.4.1.css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  
+  <!-- Bulma and Font Awesome -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="icon" href="resources/image/painpainter.png" type="image/png">
+
+  <!-- jQuery and JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script src="static/js/app.js"></script>
+  <script src="static/js/video_comparison.js"></script>
+
+  <link rel="stylesheet" href="static/css/dics.original.css">
+  <script src="static/js/event_handler.js"></script>
+  <script src="static/js/dics.original.js"></script>
+  <script>
+  </script>
+
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="margin-bottom: 0; display: flex; align-items: center; justify-content: center;">
+            <img src="resources/image/painpainter.png" alt="PAInpainter Logo" style="height: 1.5em; vertical-align: middle; margin-left: 0.5em;">
+            <strong>PAInpainter</strong>
+          </h1>
+          <h1 class="title is-1 publication-title" style="margin-bottom: 0"><strong>Perspective-aware 3D Gaussian Inpainting with Multi-view Consistency</strong></h1>
+          <h2 class="title is-2 publication-title" style="margin-top: 0; margin-bottom: 2"></h2>   
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Yuxin Cheng</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Binxiao Huang</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Taiqiang Wu</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Wenyong Zhou</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Chenchen Ding</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Zhengwu Liu</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Graziano Chesi</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="">Ngai Wong</a><sup>*</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">The University of Hong Kong, Pokfulam, Hong Kong SAR</span>&nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+            
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>corresponding author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://iccv.thecvf.com/media/PosterPDFs/ICCV%202025/1953.png?t=1757121615.9322977"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-image"></i>
+                  </span>
+                  <span>Poster</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2510.10993"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+          
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark disabled">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+            <div style="text-align: center;">
+                <img src="./resources/image/teaserFigure.png" class="center" style="margin-bottom: 8px;">
+                <div class="is-size-6" style="margin-top: 2px; color: #555; margin-bottom: 14px;">
+                <b>Figure 1:</b> Diverse inpainting scenarios of PAInpainter.
+                </div>
+            </div>
+            <div class="has-text-left" style="margin-bottom: 20px;">
+              <span class="is-size-6">We present <b><i>PAInpainter</i></b>, which significantly improves the consistency and fidelity of 3D Gaussian scene inpainting. Our approach introduces a novel adaptively iterative framework that integrates graph-based view sampling, prior-conditioned multi-view inpainting, and a dual-feature consistency verification mechanism. By leveraging off-the-shelf generative models, <b><i>PAInpainter</i></b> can be readily applied to diverse inpainting scenarios (shown as above), demonstrating strong versatility and effectiveness.</span>
+            </div>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column ">
+        <h2 class="title is-3" style="margin-top: -30px">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            3D Gaussian inpainting, a critical technique for numerous applications in virtual reality and multimedia, has made significant progress with pretrained diffusion models. However, ensuring multi-view consistency, an essential requirement for high-quality inpainting, remains a key challenge. In this work, we present PAInpainter, a novel approach designed to advance 3D Gaussian inpainting by leveraging perspective-aware content propagation and consistency verification across multi-view inpainted images. Our method iteratively refines inpainting and optimizes the 3D Gaussian representation with multiple views adaptively sampled from a perspective graph. By propagating inpainted images as prior information and verifying consistency across neighboring views, PAInpainter substantially enhances global consistency and texture fidelity in restored 3D scenes. Extensive experiments demonstrate the superiority of PAInpainter over existing methods. Our approach achieves superior 3D inpainting quality, with PSNR scores of 26.03 dB and 29.51 dB on the SPIn-NeRF and NeRFiller datasets, respectively, highlighting its effectiveness and generalization capability. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3" style="margin-top: -20px">Method</h2>
+        <div style="text-align: center; margin-bottom: 20px;">
+          <img src="./resources/image/framework.png" class="center" style="max-width: 60%; height: auto;">
+          <div class="is-size-6" style="margin-top: 10px; color: #555; margin-bottom: 14px;">
+            <b>Figure 2:</b> Framework of PAInpainter.
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <p style="margin-top: 0px">
+            <b>Key contributions of <i>PAInpainter</i>. </b> We first introduce a novel iterative framework built upon off-the-shelf generative models for 3D gaussian inpainting, integrating proposed adaptive view sampling, multi-view inpainting and post consistency verification. Our closed-loop, self-correcting approach effectively addresses the challenge of multi-view consistency in 3D scene inpainting, substantially improving the fidelity and coherence of the inpainted results.
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+          <img src="./resources/image/pipeline.png" class="center">
+          <div class="is-size-6" style="margin-top: 10px; color: #555; margin-bottom: 14px;">
+            <b>Figure 3:</b> Pipeline of PAInpainter.
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <p style="margin-top: 0px">
+            <b>Overview of <i>PAInpainter</i> for multi-view consistent 3D Gaussian inpainting.</b> Our method is built upon the pretrained Stable-Diffusion-2 and incorporates three key components: 
+            1) <span style="color: #5E91D1;"><i>perspective graph</i></span> models spatial relationships among cameras to guide adjacent view sampling; 
+            2) <span style="color: #7DBE65;"><i>inpaint content propagation</i></span> transmits inpainting content across adjacent views sampled from the perspective graph, providing extra visual priors for diffusion inpainting; 
+            3) <span style="color: #F2AA84;"><i>consistency verification</i></span> evaluates inpainted results based on texture and geometric features coherence. The perspective-aware graph sampling contributes to effective content propagation and consistency verification across multiple views.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Results</h2>
+        <h3 class="title is-4">Novel View Synthesis</h3>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+          <video class="video" width="1080" height="1920" controls loop playsinline muted style="max-width:100%; height:auto;">
+            <source src="resources/video/Inpaint_NVS.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="text-align: left; margin-bottom: 20px;">
+          <img src="./resources/image/qualitative.png" class="center" style="height: auto;">
+          <div class="is-size-6" style="margin-top: 10px; color: #555; margin-bottom: 14px;">
+            <b>Figure 4:</b> The qualitative comparison of novel view synthesis for various advanced 3D Gaussian inpainting methods on the NeRFiller dataset.
+          </div>
+        </div>
+        
+        <h3 class="title is-4">Depth rendering</h3>
+        <div style="text-align: left; margin-bottom: 20px;">
+          <img src="./resources/image/depth.png" class="center" style="height: auto;">
+          <div class="is-size-6" style="margin-top: 10px; color: #555; margin-bottom: 14px;">
+            <b>Figure 5:</b> The depth rendering via alpha blending variants. The depth maps demonstrate the geometric coherence across different views of inpainted 3D scenes by our PAInpainter.
+          </div>
+        </div>
+
+        <h3 class="title is-4">Consistency between inpainted anchor and sampled adjacent views</h3>
+        <div style="text-align: left; margin-bottom: 20px;">
+          <img src="./resources/image/anchor_adjacent.png" class="center" style="height: auto;">
+          <div class="is-size-6" style="margin-top: 10px; color: #555; margin-bottom: 14px;">
+            <b>Figure 6:</b> The inpaint content propagation between anchor images and corresponding adjacent images. With our perspective graph sampling strategy, the anchor image provides sufficient and accurate prior to adjacent images to guide consistent multi-view inpainting.
+          </div>
+        </div>
+
+        <h3 class="title is-4">Visualization of dual-feature consistency verification results</h3>
+        <div style="text-align: left; margin-bottom: 20px;">
+          <img src="./resources/image/verification.png" class="center" style="height: auto;">
+            <div class="is-size-6" style="margin-top: 10px; color: #555; margin-bottom: 14px;"></div>
+            <b>Figure 7:</b> Visualization for consistency verification. Red contours delineate mask boundaries and green boxes highlight top-scoring candidates selected for 3DGS optimization. The upper-left number of each candidate represents the consistency score. This module reliably identifies inpainted regions exhibiting both textural and geometric consistency (zoom for details), enhancing performance and robustness.
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-full-width" style="display: flex; justify-content: center; align-items: flex-start;">
+        <div style="max-width: 1200px; flex: 1;">
+          <h2 class="title">BibTeX</h2>
+          <pre><code>@misc{cheng2025perspectiveaware3dgaussianinpainting,
+      title={Perspective-aware 3D Gaussian Inpainting with Multi-view Consistency}, 
+      author={Yuxin Cheng and Binxiao Huang and Taiqiang Wu and Wenyong Zhou and Chenchen Ding and Zhengwu Liu and Graziano Chesi and Ngai Wong},
+      year={2025},
+      eprint={2510.10993},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2510.10993}
+    }</code></pre>
+        </div>
+        <div style="width: 80px;"></div>
+        <div class="widgetContainer" style="display: flex; justify-content: center; align-items: center; width: 200px; max-width: 100%;">
+          <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=w12LCx5kKpCtfG2XCRKILBoqOe1vwuEapd-AyjRovUE"></script>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+            Website template credit to <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            The video comparison with sliding bar is from <a href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>. 
+            The image comparison with sliding bar is from <a href="https://research.nvidia.com/labs/dir/neuralangelo/">Neuralangelo</a>. 
+          </p>
+        </div>
+      </div>
+          <p></p>
+        </div>
+      </div>
+</footer>
+</body>
+</html>
